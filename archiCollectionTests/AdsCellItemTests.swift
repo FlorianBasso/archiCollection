@@ -27,7 +27,7 @@ class AdsCellItemTests: XCTestCase {
         let reuseIdentifier = item.reuseIdentifier()
         
         // Then
-        XCTAssertEqual(reuseIdentifier, "AdsCell")
+        XCTAssertEqual(reuseIdentifier, String(AdsCell))
     }
     
     func test_cellSize() {
@@ -52,7 +52,7 @@ class AdsCellItemTests: XCTestCase {
         // Then
         XCTAssertNotNil(nib)
     }
-    
+            
     func itemToTest() -> AdsCellItem {
         return AdsCellItem(imageName: "imageTest")
     }

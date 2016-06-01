@@ -24,7 +24,7 @@ struct AdsCellItem {
 // MARK: - EventTableViewItem protocol
 extension AdsCellItem: CellItem {
     func reuseIdentifier() -> String {
-        return "AdsCell"
+        return String(AdsCell)
     }
     
     func configureCell(cell: UICollectionViewCell) {

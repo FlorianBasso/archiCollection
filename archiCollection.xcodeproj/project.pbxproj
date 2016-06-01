@@ -526,6 +526,7 @@
 				6479436C1CBE444F005DED17 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6479436D1CBE444F005DED17 /* Build configuration list for PBXNativeTarget "archiCollectionTests" */ = {
 			isa = XCConfigurationList;
@@ -534,6 +535,7 @@
 				6479436F1CBE444F005DED17 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

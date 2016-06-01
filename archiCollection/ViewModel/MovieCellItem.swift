@@ -47,7 +47,7 @@ struct MovieCellItem {
 // MARK: - CellItem protocol
 extension MovieCellItem: CellItem {
     func reuseIdentifier() -> String {
-        return "MovieCell\(self.type.rawValue)"
+        return "\(String(MovieCell))\(self.type.rawValue)"
     }
     
     func configureCell(cell: UICollectionViewCell) {
@@ -60,13 +60,6 @@ extension MovieCellItem: CellItem {
     
     func cellSize(maxSize: CGSize) -> CGSize {
         return CGSize(width: maxSize.width, height: self.heightForType(self.type))
-    }
-    
-    
-    func register(collectionView: UICollectionView) {
-        let nib = self.cellNib()
-        let reuseIdentifier = self.reuseIdentifier()
-        collectionView.registerNib(nib, forCellWithReuseIdentifier: reuseIdentifier)
     }
     
     func cellNib() -> UINib? {

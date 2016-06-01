@@ -7,17 +7,17 @@
 //
 
 import Foundation
+import UIKit
 
 protocol ViewModelDelegate {
-    
     func viewModelDidStartLoad()
     func viewModelDidLoad()
     func viewModelDidFail()
 }
 
-
-class ViewModel {
+class ViewModel: NSObject {
     
+    // MARK: - Properties
     private var delegate: ViewModelDelegate
     var items = [CellItem]()
     lazy var movies: [Movie] = {
@@ -39,10 +39,12 @@ class ViewModel {
         return tempMovies
     }()
     
+    // MARK: - Initialization
     init(delegate: ViewModelDelegate) {
         self.delegate = delegate
     }
     
+    // MARK: - Configuration
     func load() {
         self.delegate.viewModelDidStartLoad()
         self.addItems()
@@ -68,5 +70,19 @@ class ViewModel {
         }
         
         self.items = tempItems
+    }
+}
+
+// MARK: - UICollectionViewDataSource
+extension ViewModel: UICollectionViewDataSource {
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return items.count
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let item = self.items[indexPath.row]
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(item.reuseIdentifier(), forIndexPath: indexPath)
+        item.configureCell(cell)
+        return cell
     }
 }

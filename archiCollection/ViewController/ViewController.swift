@@ -12,35 +12,21 @@ class ViewController: UIViewController {
    
     @IBOutlet var collectionView: UICollectionView!
     lazy var viewModel: ViewModel = ViewModel(delegate: self)
-    var items = [CellItem]()
     
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.collectionView.dataSource = self.viewModel
         self.viewModel.load()
     }
     
     func registerCells() {
-        for item in self.items {
+        for item in self.viewModel.items {
             item.register(self.collectionView)
         }
     }
     
-}
-
-// MARK: - UICollectionViewDataSource
-extension ViewController: UICollectionViewDataSource {
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return items.count
-    }
-    
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let item = self.items[indexPath.row]
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(item.reuseIdentifier(), forIndexPath: indexPath)
-        item.configureCell(cell)
-        return cell
-    }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
@@ -54,7 +40,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        let item = items[indexPath.row]
+        let item = self.viewModel.items[indexPath.row]
         let width = collectionView.frame.size.width
         return item.cellSize(CGSize(width: floor(width), height: collectionView.frame.size.height))
     }
@@ -71,7 +57,6 @@ extension ViewController: ViewModelDelegate {
     }
     
     func viewModelDidLoad() {
-        self.items = self.viewModel.items
         self.registerCells()
         self.collectionView.reloadData()
     }
