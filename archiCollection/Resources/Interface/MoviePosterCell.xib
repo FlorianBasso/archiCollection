@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="jVQ-kV-zkz" customClass="MovieCell" customModule="collectionArchi" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="532" height="175"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="532" height="175"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VdX-uG-QrH">
+                        <rect key="frame" x="80" y="43" width="444" height="90"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ber-I8-Bsh">
+                        <rect key="frame" x="8" y="43" width="64" height="90"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="64" id="OII-Py-YfP"/>
+                            <constraint firstAttribute="height" constant="90" id="TWG-hZ-zqh"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="VdX-uG-QrH" secondAttribute="bottom" id="3Za-g4-Zbv"/>
+                <constraint firstItem="VdX-uG-QrH" firstAttribute="centerY" secondItem="ber-I8-Bsh" secondAttribute="centerY" id="6cX-95-TTC"/>
+                <constraint firstItem="ber-I8-Bsh" firstAttribute="centerY" secondItem="jVQ-kV-zkz" secondAttribute="centerY" id="BjH-ur-QuR"/>
+                <constraint firstAttribute="trailing" secondItem="VdX-uG-QrH" secondAttribute="trailing" constant="8" id="CjK-Oo-RAP"/>
+                <constraint firstAttribute="trailing" secondItem="VdX-uG-QrH" secondAttribute="trailing" id="PmI-wN-lY2"/>
+                <constraint firstItem="VdX-uG-QrH" firstAttribute="bottom" secondItem="ber-I8-Bsh" secondAttribute="bottom" id="aLd-Xx-fn7"/>
+                <constraint firstItem="VdX-uG-QrH" firstAttribute="leading" secondItem="ber-I8-Bsh" secondAttribute="trailing" constant="8" id="cmb-V1-nMC"/>
+                <constraint firstItem="VdX-uG-QrH" firstAttribute="leading" secondItem="jVQ-kV-zkz" secondAttribute="leading" id="mla-9h-Ufc"/>
+                <constraint firstItem="VdX-uG-QrH" firstAttribute="top" secondItem="jVQ-kV-zkz" secondAttribute="top" id="tvT-bv-Kbv"/>
+                <constraint firstItem="ber-I8-Bsh" firstAttribute="leading" secondItem="jVQ-kV-zkz" secondAttribute="leading" constant="8" id="w83-Vh-GMR"/>
+                <constraint firstItem="VdX-uG-QrH" firstAttribute="top" secondItem="ber-I8-Bsh" secondAttribute="top" id="xca-Eu-2Jj"/>
+            </constraints>
+            <size key="customSize" width="532" height="175"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="3Za-g4-Zbv"/>
+                    <exclude reference="PmI-wN-lY2"/>
+                    <exclude reference="mla-9h-Ufc"/>
+                    <exclude reference="tvT-bv-Kbv"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="imageView" destination="ber-I8-Bsh" id="HFj-81-dWV"/>
+                <outlet property="titleLabel" destination="VdX-uG-QrH" id="jIl-1K-hUh"/>
+            </connections>
+            <point key="canvasLocation" x="512" y="343.5"/>
+        </collectionViewCell>
+    </objects>
+</document>
