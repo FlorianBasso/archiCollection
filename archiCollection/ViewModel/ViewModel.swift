@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-protocol ViewModelDelegate {
+protocol ViewModelDelegate: class {
     func viewModelDidStartLoad()
     func viewModelDidLoad()
     func viewModelDidFail()
@@ -18,7 +18,7 @@ protocol ViewModelDelegate {
 class ViewModel: NSObject {
     
     // MARK: - Properties
-    private var delegate: ViewModelDelegate
+    private weak var delegate: ViewModelDelegate?
     var items = [CellItem]()
     lazy var movies: [Movie] = {
         
@@ -46,9 +46,9 @@ class ViewModel: NSObject {
     
     // MARK: - Configuration
     func load() {
-        self.delegate.viewModelDidStartLoad()
+        self.delegate?.viewModelDidStartLoad()
         self.addItems()
-        self.delegate.viewModelDidLoad()
+        self.delegate?.viewModelDidLoad()
     }
     
     func addItems() {

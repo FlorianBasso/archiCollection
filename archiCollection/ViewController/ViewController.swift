@@ -11,18 +11,23 @@ import UIKit
 class ViewController: UIViewController {
    
     @IBOutlet var collectionView: UICollectionView!
-    lazy var viewModel: ViewModel = ViewModel(delegate: self)
+    var viewModel: ViewModel?
     
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.viewModel = ViewModel(delegate: self)
         self.collectionView.dataSource = self.viewModel
-        self.viewModel.load()
+        self.viewModel?.load()
     }
     
     func registerCells() {
-        for item in self.viewModel.items {
+        guard let vm = self.viewModel else {
+            return
+        }
+        
+        for item in vm.items {
             item.register(self.collectionView)
         }
     }
@@ -40,7 +45,10 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        let item = self.viewModel.items[indexPath.row]
+        guard let vm = self.viewModel else {
+            return CGSizeZero
+        }
+        let item = vm.items[indexPath.row]
         let width = collectionView.frame.size.width
         return item.cellSize(CGSize(width: floor(width), height: collectionView.frame.size.height))
     }
